@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Collect and train the coin recognition">
+    <meta name="keywords" content="KairoScope, Rsonance Path">
+    <!-- Add manifest -->
+    <!-- Tell the browser it's a PWA -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <!-- Tell iOS it's a PWA -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#5d4040"/>
+    <link rel="icon" href="/favicon.png" >
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" media="none" onload="if(media!='all')media='all'">
+    <style>
+      .thumbDiv{
+        border: 1px solid #000;
+      }
+      .thumb{
+        margin: 5px;
+      }
+    </style>
+    <title>Coin Recognition</title>
+  </head>
+  <body>
+    <div id="no-webcam" style="display: none">No camera is detected.</div>
+    <div class="d-flex justify-content-center mb-3 mt-3">
+      <div>
+        <video autoplay playsinline muted id="webcam" width="224" height="224"></video>
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <div id="hhh" class="mr-2">
+        <div>HHH</div>
+        <div class="thumbDiv">
+          <canvas class="thumb" width=224 height=224 id="hhh-thumb"></canvas>
+        </div>
+        <div class="text-center" id="hhh-total">0 example</div>
+      </div>
+      <div id="ttt" class="mr-2">
+        <div>TTT</div>
+        <div class="thumbDiv">
+          <canvas class="thumb" width=224 height=224 id="ttt-thumb"></canvas>
+        </div>
+        <div class="text-center" id="ttt-total">0 example</div>
+      </div>
+      <div id="hht" class="mr-2">
+        <div>HHT</div>
+        <div class="thumbDiv">
+          <canvas class="thumb" width=224 height=224 id="hht-thumb"></canvas>
+        </div>
+        <div class="text-center" id="hht-total">0 example</div>
+      </div>
+      <div id="tth">
+        <div>TTH</div>
+        <div class="thumbDiv">
+          <canvas class="thumb" width=224 height=224 id="tth-thumb"></canvas>
+        </div>
+        <div class="text-center" id="tth-total">0 example</div>
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <button id="trainBtn" class="mr-3">Train</button>
+      <button id="predictBtn">Predict</button>
+    </div>
+
+    <div id="trainTextDiv" class="text-center mt-5 mb-3"></div>
+
+    <div id="trainProgress" class="justify-content-center" style="display: none">
+      <div class="progress mb-5 w-25">
+        <div id="progressBar" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="20" style="width: 0%"></div>
+      </div>
+    </div>
+
+    <div class="text-center"><span>Your coins are: </span><span id="predictionText"></span></div>
+
+    <noscript>This site requires JavaScript to work. Please change to a browser that support JavaScript or turn on JavaScript.</noscript>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>
