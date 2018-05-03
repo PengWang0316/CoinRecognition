@@ -6,7 +6,7 @@ import { ControllerDataset } from './controller_dataset';
 
 const LEARNING_RATE = 0.0001;
 const BATCH_SIZE_FRACTION = 0.4;
-const EPOCHS = 20;
+const EPOCHS = 30;
 const DENSE_UNITS = 100;
 // The number of classes we want to predict. In this example, we will be
 // predicting 4 classes for up, down, left, and right.
