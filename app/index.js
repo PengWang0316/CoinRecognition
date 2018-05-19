@@ -149,6 +149,8 @@ document.getElementById('trainBtn').addEventListener('click', async () => {
 });
 document.getElementById('predictBtn').addEventListener('click', () => predict());
 
+document.getElementById('saveBtn').addEventListener('click', () => model.save());
+
 /**
  * Initial all element for the app.
  * @return {null} No return.
