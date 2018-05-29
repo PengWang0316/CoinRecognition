@@ -20,6 +20,7 @@ const trainTextDiv = document.getElementById('trainTextDiv');
 const predictionText = document.getElementById('predictionText');
 const trainProgress = document.getElementById('trainProgress');
 const progressBar = document.getElementById('progressBar');
+const loadMessageSpan = document.getElementById('loadMessageSpan');
 
 export function setExampleHandler(_handler) {
   addExampleHandler = _handler;
@@ -72,6 +73,10 @@ export function drawThumb(img, label) {
     // const thumbCanvas = document.getElementById(`${CONTROLS[label]}-thumb`);
     draw(img, thumbCanvas[label]);
   }
+}
+
+export function showLoadSccuess(text) {
+  loadMessageSpan.innerText = text;
 }
 
 export function trainStatus(text) {

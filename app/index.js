@@ -11,6 +11,7 @@ const DENSE_UNITS = 100;
 // The number of classes we want to predict. In this example, we will be
 // predicting 4 classes for up, down, left, and right.
 const NUM_CLASSES = 4;
+const MODEL_SAVE_NAME = 'CoinRecongnitionModel';
 
 // A webcam class that generates Tensors from the images from the webcam.
 const webcam = new Webcam(document.getElementById('webcam'));
@@ -59,7 +60,7 @@ async function train() {
   // Creates a 2-layer fully connected model. By creating a separate model,
   // rather than adding layers to the mobilenet model, we "freeze" the weights
   // of the mobilenet model, and only train weights from the new model.
-  model = tf.sequential({
+  model = model || tf.sequential({
     layers: [
       // Flattens the input to a vector so we can use it in a dense layer. While
       // technically a layer, this only performs a reshape (and has no training
@@ -149,7 +150,19 @@ document.getElementById('trainBtn').addEventListener('click', async () => {
 });
 document.getElementById('predictBtn').addEventListener('click', () => predict());
 
-document.getElementById('saveBtn').addEventListener('click', () => model.save());
+document.getElementById('saveBtn').addEventListener('click', async () => {
+  await model.save(`indexeddb://${MODEL_SAVE_NAME}`);
+});
+
+document.getElementById('downloadBtn').addEventListener('click', async () => {
+  await model.save(`downloads://${MODEL_SAVE_NAME}`);
+});
+
+document.getElementById('loadFromIndexedDBBtn').addEventListener('click', async () => {
+  model = await tf.loadModel(`indexeddb://${MODEL_SAVE_NAME}`);
+  ui.showLoadSccuess('Load the model from indexeddb!');
+  console.log(await tf.io.listModels());
+});
 
 /**
  * Initial all element for the app.
