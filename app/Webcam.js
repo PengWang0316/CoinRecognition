@@ -33,8 +33,10 @@ class Webcam {
  */
   capture() {
     return tf.tidy(() => {
-    // Reads the image as a Tensor from the webcam <video> element.
-      const webcamImage = tf.fromPixels(this.webcamElement);
+      // Before the tensor flow core update, this method is needed to make tf.fromPixels work.
+      // this.createCanvas();
+      // Reads the image as a Tensor from the webcam <video> element.
+      const webcamImage = tf.fromPixels(this.createCanvas(this.webcamElement));
       // Crop the image so we're using the center square of the rectangular
       // webcam.
       const croppedImage = Webcam.cropImage(webcamImage);
@@ -45,6 +47,17 @@ class Webcam {
       // so we divide by 127 and subtract 1.
       return batchedImage.toFloat().div(tf.scalar(127)).sub(tf.scalar(1));
     });
+  }
+
+  createCanvas() {
+    if (this.canvas != null) this.canvas.remove();
+    this.canvas = document.createElement('canvas');
+    this.canvas.width = this.webcamElement.width;
+    this.canvas.height = this.webcamElement.height;
+    this.canvas.getContext('2d').drawImage(this.webcamElement, 0, 0, this.webcamElement.width, this.webcamElement.height);
+    return this.canvas;
+    // this.webcamElement = canvas;
+    // if (canvas != null) canvas.remove();
   }
 
   /**
